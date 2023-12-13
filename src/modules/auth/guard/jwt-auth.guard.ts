@@ -1,6 +1,8 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Request } from "express";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 
@@ -14,19 +16,17 @@ export class MEAuthGuard implements CanActivate {
         const request = context.switchToHttp().getRequest()
         console.log(request.headers.authorization)
 
-        console.log("No token yet")
         const token = this.tokenFromHeader(request)
+
         if (!token) {
-            throw new UnauthorizedException();            
+            throw new UnauthorizedException()
         }
 
         try {
-            const payload = await this.jwtService.signAsync(
-                token,
-                {secret: process.env.AUTHSECRETKEY}
-            )
+            const payload = await this.jwtService.signAsync(token, {
+                secret: "" + process.env.JWT_SECRET_KEY,
+            })
             request.user = payload
-
         } catch(error) {
             throw new UnauthorizedException();            
         }
@@ -38,6 +38,6 @@ export class MEAuthGuard implements CanActivate {
         console.log("Sabado")
         const [type, token] = request.headers.authorization?.split(' ') ?? []
         console.log("----> ver token: ", token)
-        return type === 'Bearer' ? token : undefined
+        return type === "Bearer" ? token : undefined
     }
 }

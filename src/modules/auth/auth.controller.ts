@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Request, Get, Post, UseGuards } from "@nestjs/common";
 import { CreateUserDTO } from "../user/create-user.dto";
 import { User } from "../user/user.entity";
 import { AuthLoginDTO } from "./auth-login.dto";
@@ -25,7 +25,7 @@ export class AuthController {
     
     @Get('list')
     @UseGuards(MEAuthGuard)
-    authList() {
+    authList(@Request() req) {
         return "AUTH - List"
     }
 }
