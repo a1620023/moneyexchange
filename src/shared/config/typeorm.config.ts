@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { MoneyExchange } from "../../modules/moneyexchange/entities/mexchange.entity";
 import { Currency } from "../../modules/moneyexchange/entities/currency.entity";
+import { User } from "src/modules/user/user.entity";
 
 
 const TypeORMConfig: TypeOrmModuleOptions = {
@@ -9,6 +10,7 @@ const TypeORMConfig: TypeOrmModuleOptions = {
     entities: [
         MoneyExchange,
         Currency,
+        User
     ],
     synchronize: true
 }

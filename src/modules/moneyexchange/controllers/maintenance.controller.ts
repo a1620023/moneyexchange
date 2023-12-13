@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common/decorators"
+import { ApiTags } from "@nestjs/swagger"
 import { CreateCurrencyDTO } from "../dtos/create-currency.dto"
 import { UpdateCurrencyDTO } from "../dtos/update-currency.dto"
 import { Currency } from "../entities/currency.entity"
 import { MaintenanceService } from "../services/maintenance.service"
 
-
+@ApiTags('maintenance')
 @Controller('maintenance')
 export class MaintenanceController {
     constructor(
@@ -14,6 +15,7 @@ export class MaintenanceController {
 
     @Post('mcreatecurrency')
     createCurrencyMaintenance(@Body() createCurrencyDTO: CreateCurrencyDTO): Promise<Currency> {
+        console.log("currency: ", createCurrencyDTO)
         return this.maintenanceService.createCurrency(createCurrencyDTO)
    }
 
@@ -25,11 +27,11 @@ export class MaintenanceController {
    @Get('mfindallcurrency')
     getallCurrencyMaintenance():Promise<Currency[]> {
         console.log("price: ",this.maintenanceService.findAllCurrency())
-    return this.maintenanceService.findAllCurrency()//id, amount, originCuID, destinationCuID, convertedA)
+    return this.maintenanceService.findAllCurrency()
    }
 
    @Get('mfindcurrencybyid')
     getCurrencyByIDMaintenance(@Body('id') id){
-        return this.maintenanceService.findCurrencyByID(id)//id, amount, originCuID, destinationCuID, convertedA)
+        return this.maintenanceService.findCurrencyByID(id)
    }
 }

@@ -8,7 +8,7 @@ export class MoneyExchange {
     id: number
 
     @Column('decimal')
-    amount: Double
+    amount: number
 
     @Column('text')
     fromCurrency: string

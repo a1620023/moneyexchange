@@ -14,10 +14,10 @@ export class Currency {
     originCCode: string
 
     @Column('decimal')
-    purchase: Double
+    purchase: number
 
     @Column('decimal')
-    sale: Double
+    sale: number
 
     @Column()
     state: boolean

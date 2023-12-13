@@ -1,9 +1,10 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { MoneyExchange } from "src/modules/moneyexchange/entities/mexchange.entity";
 import { MoneyExchangeService } from "src/modules/moneyexchange/services/mexchange.service";
 import { CreateMoneyExchangeDTO } from "../dtos/create-exchangerate.dto";
 
-
+@ApiTags('exchangerate')
 @Controller('exchangerate')
 export class MoneyExchangeController {
     constructor(
