@@ -1,16 +1,24 @@
+import { IsBoolean, IsNumber, IsOptional, IsString } from "class-validator"
 
 export class CreateCurrencyDTO {
     public id: number
 
+    @IsString()
     public country: string
 
+    @IsString()
     public originCCode: string
 
+    @IsNumber()
     public purchase: number
 
+    @IsNumber()
     public sale: number
 
-    public state: boolean
+    @IsOptional()
+    @IsBoolean()
+    public isActive: boolean
 
+    @IsString()
     public destineCCode: string
 }

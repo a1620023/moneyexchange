@@ -32,8 +32,4 @@ import { MoneyExchangeService } from './services/mexchange.service';
         MaintenanceService,
     ],
 })
-export class MoneyExchangeModule {
-    constructor(
-        private mExchangeService: MoneyExchangeService,
-    ){}
-}
+export class MoneyExchangeModule {}
