@@ -19,8 +19,8 @@ export class Currency {
     @Column('decimal')
     sale: number
 
-    @Column()
-    state: boolean
+    @Column({default:true})
+    isActive: boolean
 
     @Column('text')
     destineCCode: string

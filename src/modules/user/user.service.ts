@@ -10,15 +10,15 @@ import { User } from "./user.entity"
 export class UserService {
     constructor(
         @InjectRepository(User)
-        private userRepository: Repository<User>
+        private readonly userRepository: Repository<User>
     ){}
     //
     async createUser(createUserDTO: CreateUserDTO){
         return await this.userRepository.save(createUserDTO)
     }
 
-    async findOne(username: string): Promise<User> {
-        return this.userRepository.findOne({where: {username}})
+    async findOneByEmail(email: string): Promise<User> {
+        return this.userRepository.findOne({where: {email}})
     }
 
     async userList(){

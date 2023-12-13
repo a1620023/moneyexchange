@@ -9,7 +9,7 @@ import { Currency } from "../entities/currency.entity"
 export class MaintenanceService {
     constructor(
         @InjectRepository(Currency)
-        private mCurrencyRespository: Repository<Currency>
+        private readonly mCurrencyRespository: Repository<Currency>
     ){}
     //
 

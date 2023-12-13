@@ -18,8 +18,8 @@ export class UserController {
    }
 
     @Post('login')
-    autenticate(@Body('username') username){
-        return this.userService.findOne(username)
+    autenticate(@Body('email') email){
+        return this.userService.findOneByEmail(email)
    }
 
    @Get('list')
